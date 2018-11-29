@@ -1,0 +1,63 @@
+/* example CSS */
+body {
+  font-family: Bangers, sans-serif;
+  font-weight: 300;
+  font-size: 20px;
+}
+
+main {
+  padding: 20px;
+}
+
+p {
+  margin: 16px 0;
+}
+
+.spooky-title {
+  font-family: Creepster, sans-serif;
+  font-size: 5em;
+  color: rgb(181,26,56);
+}
+@media only screen and (max-width: 768px) {
+  .spooky-title {
+    font-size: 3em;
+  }
+}
+
+.story-title {
+  font-family: Creepster, sans-serif;
+  font-size: 2em;
+  color: rgb(181,26,56);
+}
+
+.navbar-brand a {
+  display: block;
+  height: 72px;
+  width: 278px;
+  padding: 0 15px;
+  background: url(https://www.anythinklibraries.org/sites/all/themes/anythinktheme/images/squiggle-logo.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.storyteller {
+  font-family: sans-serif;
+  font-size: smaller;
+}
+
+footer a {
+  color: rgb(181,26,56);
+}
+
+footer #social {
+  font-size: 40px;
+}
+
+footer #social i {
+  margin: 0 4px;
+}
+
+#map {
+  height: 360px;
+  z-index: 1;
+}
