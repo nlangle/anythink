@@ -1,2 +1,2 @@
-# this is cloned from my git.io acct:wq
+# this is cloned from my git.io acct
 
