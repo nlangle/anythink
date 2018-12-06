@@ -1,0 +1,100 @@
+<!doctype html>
+            <html class="no-js" lang="en">
+              <head>
+                <meta charset="utf-8">
+                <meta http-equiv="x-ua-compatible" content="ie=edge">
+                <title>Anythink Cooking & Coding</title>
+                <meta name="description" content="my description goes here">
+                <meta name="Keywords" content="web design, anythink, example">
+                <meta name="viewport" content="width=device-width, initial-scale=1">
+                <link rel="icon" type="img/ico" href="images/8bit-heart.png"/>
+
+                <!--front-end framework-->
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.css" crossorigin="anonymous"/>
+
+                <!--Load styles-->
+                <link rel="stylesheet" href="main.css">
+
+                <!--Web Fonts-->
+                <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+                <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+
+                <!--map-->
+                <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css" integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA==" crossorigin=""/>
+
+              </head>
+              <body>
+                <header>
+                  <nav class="navbar is-light">
+                    <div class="navbar-brand">
+                      <a class="navbar-item anythink-logo" href="http://anythinklibraries.org/">
+                      </a>
+                      <div class="navbar-burger burger" data-target="anythinkNavbar">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                      </div>
+                    </div>
+
+                    <div id="anythinkNavbar" class="navbar-menu">
+                      <div class="navbar-start"></div>
+                      <div class="navbar-end">
+                        <a class="navbar-item" href="index.html">Home</a>
+                        <a class="navbar-item" href="build.html">Let's build a map</a>
+                      </div>
+                    </div>
+                  </nav>
+                </header>
+                <main>
+                  <section id="intro">
+                    <h1 class="title has-text-centered">My Hour of Code Map</h1>
+                    <hr />
+                    <p>
+                      By: Nick
+                    </p>
+                  </section>
+                  <section>
+                    <hr />
+                    <div id="map"></div>
+                  </section>
+                </main>
+                <footer class="has-background-link">
+                  <div id="social" class="has-text-centered">
+                    <a href="https://www.facebook.com/ilovemyanythink/"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
+                    <a href="https://twitter.com/ilovemyanythink"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
+                  </div>
+                </footer>
+                <!--Load Scripts-->
+                <script src="script.js" async></script>
+
+                <!--THIS IS WHERE TO START BUILDING YOUR MAP SCRIPT-->
+                <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js" integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA==" crossorigin=""></script>
+                <script>
+
+                  var mymap = L.map('map').setView([39.9726877, -104.7941892], 13);
+
+                  var CartoDB_Voyager = L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+  	               attribution: '© OpenStreetMap © CARTO',
+                   subdomains: 'abcd',
+                   maxZoom: 20
+                 }).addTo(mymap);
+
+                 var yummy = L.icon({
+                   iconUrl: 'images/yummy-emoji.png',
+                   iconSize: [50, 50],
+                 });
+
+                 var yummyMarker = L.marker([39.986964, -104.8206], {icon:yummy}).addTo(mymap);
+                 yummyMarker.bindPopup('<b>Pinocchio\'s Italian Eatery</b><hr/>I love the spaghetti <img class="emoji__small" src="images/pasta.png" /> here!');
+
+                 var bleh = L.icon({
+                   iconUrl: 'images/bleh-emoji.png',
+                   iconSize: [50, 50],
+                 });
+
+                 var blehMarker = L.marker([39.96, -104.764], {icon:bleh}).addTo(mymap);
+                 blehMarker.bindPopup('<b>the railroad tracks by Barr Lake</b><hr/>I found a dead fish <img class="emoji__small" src="images/fish-bone.png" />near the railroad tracks, it did not look appetizing.  I think it may have been the leftovers from a hawk\'s meal.');
+
+                </script>
+              </body>
+            </html>

@@ -1,0 +1,96 @@
+/* example CSS */
+body {
+  font-weight: 300;
+  font-size: 20px;
+}
+
+main {
+  padding: 20px;
+}
+
+section:first-of-type {
+  margin-top: 40px;
+}
+
+section {
+  margin: 80px auto;
+}
+
+p {
+  margin: 16px 0;
+}
+
+ol {
+  padding-left: 24px;
+}
+
+.navbar-brand {
+  padding-left: 16px;
+}
+.navbar-brand a {
+  display: block;
+  height: 72px;
+  width: 100%;
+  padding: 8px 16px;
+  /*background: url(https://www.anythinklibraries.org/sites/all/themes/anythinktheme/images/squiggle-logo.png);
+  background-size: contain;
+  background-repeat: no-repeat;*/
+}
+
+.anythink-logo {
+  min-width: 100px;
+  background: url(https://www.anythinklibraries.org/sites/all/themes/anythinktheme/images/squiggle-logo.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: 1000;
+}
+
+.navbar-brand a.anythink-logo:focus,
+.navbar-brand a.anythink-logo:hover {
+  filter: hue-rotate(180deg);
+}
+
+.anythink-map-popup-logo {
+  height: 120px;
+  width: 100%;
+  background-position: center;
+}
+
+.title, .subtitle {
+  font-family: 'Press Start 2P', cursive;
+}
+
+.emoji__big {
+  height: 72px;
+  width: 72px;
+}
+
+.emoji__small {
+  height: 32px;
+  width: 32px;
+}
+
+.leaflet-popup-content {
+  min-width: 200px;
+}
+
+.leaflet-popup-content hr {
+  margin: 8px 16px;
+}
+
+footer a {
+  color: white;
+}
+
+footer #social {
+  font-size: 40px;
+}
+
+footer #social i {
+  margin: 0 4px;
+}
+
+#map {
+  height: 460px;
+  z-index: 1;
+}

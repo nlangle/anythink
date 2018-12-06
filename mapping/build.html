@@ -1,0 +1,442 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Anythink Cooking & Coding</title>
+    <meta name="description" content="my description goes here">
+    <meta name="Keywords" content="web design, anythink, example">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="img/ico" href="images/8bit-heart.png"/>
+
+    <!--front-end framework-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.css" crossorigin="anonymous"/>
+
+    <!--Load styles-->
+    <link rel="stylesheet" href="main.css">
+
+    <!--Web Fonts-->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+
+    <!--map-->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css" integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA==" crossorigin=""/>
+
+  </head>
+  <body>
+    <header>
+      <nav class="navbar is-light">
+        <div class="navbar-brand">
+          <a class="navbar-item anythink-logo" href="http://anythinklibraries.org/">
+          </a>
+          <div class="navbar-burger burger" data-target="anythinkNavbar">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+
+        <div id="anythinkNavbar" class="navbar-menu">
+          <div class="navbar-start"></div>
+          <div class="navbar-end">
+            <a class="navbar-item" href="index.html">Home</a>
+            <a class="navbar-item" href="build.html">Let's build a map</a>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <section id="intro">
+        <h1 class="title has-text-centered">Map Recipe</h1>
+        <hr />
+        <p>
+          First, we need to prep our working area!  You'll need a text editor, so fire up Atom!
+        </p>
+        <p>
+          Here's our ingredients:
+          <ol>
+            <li>
+              an HTML document
+            </li>
+            <li>
+              a JavaScript map library
+            </li>
+            <li>
+              a base map layer
+            </li>
+            <li>
+              latitude and longitude for your <b>favorite</b> restaurant
+            </li>
+            <li>
+              latitude and longitude for your <b>least</b> favorite restaurant
+            </li>
+          </ol>
+        </p>
+      </section>
+      <section>
+        <h2 class="title">HTML</h2>
+        <p>
+          for this excercise, we will use a pre-built page so that it fits right in and we can focus on working with the map.  so, take the following code and enter it into your Atom text editor:
+          <br /><btn class="button pull-right" data-target="quickStartHTML" onclick="copyFunction(this)">copy HTML code</btn><br />
+          <pre id="quickStartHTML">
+            &lt;!doctype html>
+            &lt;html class="no-js" lang="en">
+              &lt;head>
+                &lt;meta charset="utf-8">
+                &lt;meta http-equiv="x-ua-compatible" content="ie=edge">
+                &lt;title>Anythink Cooking & Coding&lt;/title>
+                &lt;meta name="description" content="my description goes here">
+                &lt;meta name="Keywords" content="web design, anythink, example">
+                &lt;meta name="viewport" content="width=device-width, initial-scale=1">
+                &lt;link rel="icon" type="img/ico" href="images/8bit-heart.png"/>
+
+                &lt;!--front-end framework-->
+                &lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.css" crossorigin="anonymous"/>
+
+                &lt;!--Load styles-->
+                &lt;link rel="stylesheet" href="main.css">
+
+                &lt;!--Web Fonts-->
+                &lt;link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+                &lt;link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+
+                &lt;!--map-->
+                &lt;link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css" integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA==" crossorigin=""/>
+
+              &lt;/head>
+              &lt;body>
+                &lt;header>
+                  &lt;nav class="navbar is-light">
+                    &lt;div class="navbar-brand">
+                      &lt;a class="navbar-item anythink-logo" href="http://anythinklibraries.org/">
+                      &lt;/a>
+                      &lt;div class="navbar-burger burger" data-target="anythinkNavbar">
+                        &lt;span>&lt;/span>
+                        &lt;span>&lt;/span>
+                        &lt;span>&lt;/span>
+                      &lt;/div>
+                    &lt;/div>
+
+                    &lt;div id="anythinkNavbar" class="navbar-menu">
+                      &lt;div class="navbar-start">&lt;/div>
+                      &lt;div class="navbar-end">
+                        &lt;a class="navbar-item" href="index.html">Home&lt;/a>
+                        &lt;a class="navbar-item" href="build.html">Let's build a map&lt;/a>
+                      &lt;/div>
+                    &lt;/div>
+                  &lt;/nav>
+                &lt;/header>
+                &lt;main>
+                  &lt;section id="intro">
+                    &lt;h1 class="title has-text-centered">My Hour of Code Map&lt;/h1>
+                    &lt;hr />
+                    &lt;p>
+                      By: your first name here, or nickname, or alias...
+                    &lt;/p>
+                  &lt;/section>
+                  &lt;section>
+                    &lt;hr />
+                    &lt;div id="map">&lt;/div>
+                  &lt;/section>
+                &lt;/main>
+                &lt;footer class="has-background-link">
+                  &lt;div id="social" class="has-text-centered">
+                    &lt;a href="https://www.facebook.com/ilovemyanythink/">&lt;i class="fa fa-facebook-square" aria-hidden="true">&lt;/i>&lt;/a>
+                    &lt;a href="https://twitter.com/ilovemyanythink">&lt;i class="fa fa-twitter-square" aria-hidden="true">&lt;/i>&lt;/a>
+                  &lt;/div>
+                &lt;/footer>
+                &lt;!--Load Scripts-->
+                &lt;script src="script.js" async>&lt;/script>
+
+                &lt;!--THIS IS WHERE TO START BUILDING YOUR MAP SCRIPT-->
+
+              &lt;/body>
+            &lt;/html>
+          </pre>
+        </p>
+      </section>
+      <section>
+        <h2 class="title">add the map library</h2>
+        <p>
+          next, we need to add the map library in order to add a working map on our page.  we will be importing one from <a href="https://leafletjs.com">Leaflet</a>.
+        </p>
+        <p>
+          copy the following JavaScript code:
+          <br /><btn class="button pull-right" data-target="addLeaflet" onclick="copyFunction(this)">copy script code</btn><br />
+          <pre id="addLeaflet" style="word-wrap: break-word; white-space: pre-wrap;">&lt;script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js" integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA==" crossorigin="">&lt;/script></pre>
+          <br />
+          and paste it toward the bottom of your HTML document (just below this line:<br /> <code>&lt;!--THIS IS WHERE TO START BUILDING YOUR MAP SCRIPT--></code>):
+        </p>
+      </section>
+      <section>
+        <h2 class="title">set up your map script</h2>
+        <p>
+          now we are ready to start assembling the map ingredients.
+          <br /><br />
+          add a new <code>&lt;script></code> block below the line where you placed the call to your map library (in the above step)
+          <br />
+          <pre>
+            &lt;script>
+
+            &lt;/script>
+          </pre>
+          <br /><br />
+          next, let's add a map variable to set the center coordinates and the zoom level:<btn class="button pull-right" data-target="addMap" onclick="copyFunction(this)">copy highlighted code</btn>
+          <br /><br />
+          <pre>
+            &lt;script>
+
+              <mark id="addMap">
+              var mymap = L.map('map').setView([39.9869599, -104.8195388], 18);</mark>
+
+            &lt;/script>
+          </pre>
+          <br />
+          the latitude coordinates we are starting with are <b>39.9869599</b>.
+          <br />
+          <pre>
+            &lt;script>
+
+              var mymap = L.map('map').setView([<mark>39.9869599</mark>, -104.8195388], 18);
+
+            &lt;/script>
+          </pre>
+          <br />
+          the longitude coordinates are <b>-104.8195388</b>.
+          <br />
+          <pre>
+            &lt;script>
+
+              var mymap = L.map('map').setView([39.9869599, <mark>-104.8195388</mark>], 18);
+
+            &lt;/script>
+          </pre>
+          <br />These coordinates were retrieved from Google Maps for the Anythink Brighton location.
+          <br /><br />
+          The zoom level for the map is set to <b>18</b>.
+          <br />
+          <pre>
+            &lt;script>
+
+              var mymap = L.map('map').setView([39.9869599, -104.8195388], <mark>18</mark>);
+
+            &lt;/script>
+          </pre>
+          <br />
+          We can change the map center by supplying new lat/long coordinates.  And, we can change the geographic area shown by adjusting the zoom level.  a number less than 18 will zoom further out, showing a greater area.
+          <br /><br /><br />
+          next, we will add a JavaScript variable that sets the map tiles (the base layer):<btn class="button pull-right" data-target="addBaseLayer" onclick="copyFunction(this)">copy highlighted code</btn>
+          <br /><br />
+          <pre>
+            &lt;script>
+
+              var mymap = L.map('map').setView([39.9869599, -104.8195388], 18);
+
+              <mark id="addBaseLayer">
+              var CartoDB_Voyager = L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+               attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
+               subdomains: 'abcd',
+               maxZoom: 20
+              }).addTo(mymap);</mark>
+
+            &lt;/script>
+          </pre>
+          <br />
+          at the end of this new line, there is a callback which adds our new variable to the map <code>.addTo(mymap)</code>
+          <br /><br />
+          <h3 class="subtitle">emojis in all the right places</h3>
+          now we are ready to add map markers!  let's start with our favorite location.  for this, we will use the yummy emoji <img class="emoji__small" src="images/yummy-emoji.png" />.
+          <br /><br />
+          first add the code to declare a variable that sets our yummy icon, then add the marker to the map:<btn class="button pull-right" data-target="yummyIcon" onclick="copyFunction(this)">copy yummy icon code</btn>
+          <br /><br />
+          <pre>
+            &lt;script>
+
+              var mymap = L.map('map').setView([39.9869599, -104.8195388], 18);
+
+              var CartoDB_Voyager = L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+	               attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
+                 subdomains: 'abcd',
+                 maxZoom: 20
+               }).addTo(mymap);
+
+              <mark id="yummyIcon">
+              var yummy = L.icon({
+               iconUrl: 'images/yummy-emoji.png',
+               iconSize: [50, 50],
+              });</mark>
+
+            &lt;/script>
+          </pre>
+          <br /><br />
+          then add the marker to the map:<btn class="button pull-right" data-target="yummyMarker" onclick="copyFunction(this)">copy yummy marker code</btn>
+          <br /><br />
+          <pre>
+            &lt;script>
+
+              var mymap = L.map('map').setView([39.9869599, -104.8195388], 18);
+
+              var CartoDB_Voyager = L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+	               attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
+                 subdomains: 'abcd',
+                 maxZoom: 20
+               }).addTo(mymap);
+
+               var yummy = L.icon({
+                 iconUrl: 'images/yummy-emoji.png',
+                 iconSize: [50, 50],
+               });
+
+              <mark id="yummyMarker">
+              var yummyMarker = L.marker([39.9869599, -104.8195388], {icon:yummy}).addTo(mymap);
+              yummyMarker.bindPopup('&lt;b><b>name goes here</b>&lt;/b>&lt;hr/><b>why you like it</b>');</mark>
+
+            &lt;/script>
+          </pre>
+          <br /><br />
+          now, we need to set the location for your favorite location.  use <a href="https://www.google.com/maps" target="_blank">Google Maps</a> to search for your place of choice.
+          <br /><Br />
+          once you find it on the map, you can extract the latitude/longitude coordinates from the URL in the web browser address bar.  It looks like this for Anythink Brighton:
+          <pre style="word-wrap: break-word; white-space: pre-wrap;">
+            https://www.google.com/maps/place/Anythink+Brighton+Library/@39.986964,-104.8217328,17z/data=!3m1!4b1!4m5!3m4!1s0x876c6d39283c959b:0xef5fb06b58a64850!8m2!3d39.9869599!4d-104.8195388
+          </pre>
+          <br />
+          look at the very end, see the <code>!3d39.9869599!4d-104.8195388</code>?  Those are the coordinates.
+          <br /><br />
+          ignore the <code>!3d</code>, and just copy your <b>latitude</b> number following it, all the way to the next <code>!</code>.  like so:
+          <br />
+          (<code>!3d<mark>39.9869599</mark>!4d-104.8195388</code>)
+          <br /><br />
+          Do the same for the <b>longitude</b>, ignore the <code>!4d</code> and copy it until the end.  MAKE SURE TO INCLUDE THE DASH <code>-</code>
+          <br />
+          (<code>!3d39.9869599!4d<mark>-104.8195388</mark></code>)
+          <br /><br />
+          Use these numbers to set your yummyMarker variable<br />
+          <code>
+            var yummyMarker = L.marker([<mark>latitude</mark>, <mark>longitude</mark>], {icon:yummy}).addTo(mymap);
+          </code>
+          <br /><br />
+          last, make sure you set the text for the popup that appears when the marker is clicked.  add the location name between the &lt;b> &lt;/b> tags, and info about why you think it is so awesome after that:<br />
+          <code>
+            yummyMarker.bindPopup('&lt;b><mark>name goes here</mark>&lt;/b>&lt;hr/><mark>why you like it</mark>');
+          </code>
+          <br /><hr /><br />
+          now, lets add a marker for your least favorite spot.  essentially, this is just repeating the last steps, but adding a nauseated emoji for our least favorite <img class="emoji__small" src="images/bleh-emoji.png" /><btn class="button pull-right" data-target="blehIcon" onclick="copyFunction(this)">copy bleh icon code</btn>
+          <br /><br />
+          <pre>
+            &lt;script>
+
+              var mymap = L.map('map').setView([39.9869599, -104.8195388], 18);
+
+              var CartoDB_Voyager = L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+	               attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
+                 subdomains: 'abcd',
+                 maxZoom: 20
+               }).addTo(mymap);
+
+               var yummy = L.icon({
+                 iconUrl: 'images/yummy-emoji.png',
+                 iconSize: [50, 50],
+               });
+
+               var yummyMarker = L.marker([39.9869599, -104.8195388], {icon:yummy}).addTo(mymap);
+               yummyMarker.bindPopup('&lt;b>name goes here&lt;/b>&lt;hr/>why you like it');
+
+              <mark id="blehIcon">
+              var bleh = L.icon({
+               iconUrl: 'images/bleh-emoji.png',
+               iconSize: [50, 50],
+              });</mark>
+
+            &lt;/script>
+          </pre>
+          <br /><br />
+          now, set the variable to add the new marker<btn class="button pull-right" data-target="blehMarker" onclick="copyFunction(this)">copy bleh marker code</btn>
+          <br /><br />
+          <pre>
+            &lt;script>
+
+              var mymap = L.map('map').setView([39.9869599, -104.8195388], 18);
+
+              var CartoDB_Voyager = L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+	               attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
+                 subdomains: 'abcd',
+                 maxZoom: 20
+               }).addTo(mymap);
+
+               var yummy = L.icon({
+                 iconUrl: 'images/yummy-emoji.png',
+                 iconSize: [50, 50],
+               });
+
+               var yummyMarker = L.marker([39.9869599, -104.8195388], {icon:yummy}).addTo(mymap);
+               yummyMarker.bindPopup('&lt;b>name goes here&lt;/b>&lt;hr/>why you like it');
+
+               var bleh = L.icon({
+                 iconUrl: 'images/bleh-emoji.png',
+                 iconSize: [50, 50],
+               });
+
+               <mark id="blehMarker">
+               var blehMarker = L.marker([39.9869599, -104.8195388], {icon:bleh}).addTo(mymap);
+               blehMarker.bindPopup('&lt;b>name goes here&lt;/b>&lt;hr/>why you dislike it');</mark>
+
+            &lt;/script>
+          </pre>
+          <br /><br />
+          and repeat the steps to find the coordinates and update the text to explain why you dislike this one.
+          <br /><hr /><br />
+          once it is all together, your code should look similar to this:
+          <br />
+          <pre>
+            &lt;script>
+
+              var mymap = L.map('map').setView([39.9869599, -104.8195388], 18);
+
+              var CartoDB_Voyager = L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+	               attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
+                 subdomains: 'abcd',
+                 maxZoom: 20
+               }).addTo(mymap);
+
+               var yummy = L.icon({
+                 iconUrl: 'images/yummy-emoji.png',
+                 iconSize: [50, 50],
+               });
+
+               var yummyMarker = L.marker([39.9869599, -104.8195388], {icon:yummy}).addTo(mymap);
+               yummyMarker.bindPopup('&lt;b>name goes here&lt;/b>&lt;hr/>why you like it');
+
+               var bleh = L.icon({
+                 iconUrl: 'images/bleh-emoji.png',
+                 iconSize: [50, 50],
+               });
+
+               var blehMarker = L.marker([39.9869599, -104.8195388], {icon:bleh}).addTo(mymap);
+               blehMarker.bindPopup('&lt;b>name goes here&lt;/b>&lt;hr/>why you dislike it');
+
+            &lt;/script>
+          </pre>
+        </p>
+      </section>
+      <section>
+        <h2 class="title has-text-centered">congrats!  you should now have a map!</h2>
+        <p  class="has-text-centered">
+          <img src="images/8bit-heart.png" />
+          <br />
+          <a href="example.html">click here to see a working example.</a>
+        </p>
+        <br />
+      </section>
+    </main>
+    <footer class="has-background-link">
+      <div id="social" class="has-text-centered">
+        <a href="https://www.facebook.com/ilovemyanythink/"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
+        <a href="https://twitter.com/ilovemyanythink"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
+      </div>
+    </footer>
+    <!--Load Scripts-->
+    <script src="script.js" async></script>
+    <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js" integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA==" crossorigin=""></script>
+  </body>
+</html>
